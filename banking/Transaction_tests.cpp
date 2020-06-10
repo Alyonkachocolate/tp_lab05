@@ -29,7 +29,7 @@ TEST(Transaction, Make) {
 
   // small sum
   Mock_Account account3(8, 800), account4(555, 3535);
-  ASSERT_THROW(transaction.Make(account1, account2, 99), std::logic_error);
+  ASSERT_THROW(transaction.Make(account3, account4, 99), std::logic_error);
 }
 
 TEST(Transaction, fee) {

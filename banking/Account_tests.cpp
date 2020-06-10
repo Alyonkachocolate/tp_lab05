@@ -40,7 +40,7 @@ TEST(Account, ChangeBalance) {
   EXPECT_EQ(account.GetBalance(), 203);
 
   account.ChangeBalance(-1);
-  EXPECT_EQ(account.GetBalance(), 100);
+  EXPECT_EQ(account.GetBalance(), 202);
 }
 
 TEST(Account, ChangeBalance_without_lock) {

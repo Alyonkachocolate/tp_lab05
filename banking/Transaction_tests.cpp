@@ -29,7 +29,7 @@ TEST(Transaction, Make) {
                std::invalid_argument);
 
   // small sum
-  account3(1, 123).ChangeBalance(700);
+  account3.ChangeBalance(700);
   account4.ChangeBalance(3000);
   ASSERT_THROW(transaction.Make(account3, account4, 99), std::logic_error);
 }

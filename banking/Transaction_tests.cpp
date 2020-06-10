@@ -24,11 +24,13 @@ TEST(Transaction, Make) {
   ASSERT_THROW(transaction.Make(account1, account2, 15), std::logic_error);
 
   // negative
-  ASSERT_THROW(transaction.Make(account1, account2, -123),
+  Mock_Account account3(1, 123), account4(2, 456);
+  ASSERT_THROW(transaction.Make(account3, account4, -123),
                std::invalid_argument);
 
   // small sum
-  Mock_Account account3(8, 800), account4(555, 3535);
+  account3(1, 123).ChangeBalance(700);
+  account4.ChangeBalance(3000);
   ASSERT_THROW(transaction.Make(account3, account4, 99), std::logic_error);
 }
 

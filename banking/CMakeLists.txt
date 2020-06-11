@@ -5,6 +5,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(lab05)
 
+option(BUILD_TESTS "Build tests" OFF)
+option(COVERAGE "Coverage" OFF)
+
 include_directories(${PROJECT_NAME} .)
 
 if (BUILD_TESTS)
@@ -38,4 +41,9 @@ if (BUILD_TESTS)
     add_executable(test ${${PROJECT_NAME}_SOURCES} ${${PROJECT_NAME}_TEST_SOURCES})
     target_link_libraries(test gtest gmock_main)
     add_test(NAME test COMMAND test)
+endif()
+
+if (COVERAGE)
+    target_compile_options(test PRIVATE --coverage)
+    target_link_libraries(test --coverage)
 endif()

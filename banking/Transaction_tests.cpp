@@ -70,9 +70,8 @@ TEST(Transaction, transaction_successful) {
   EXPECT_CALL(account1, Lock()).Times(1).WillOnce([&account1]() {
     return account1.Account::Lock();
   });
-  EXPECT_CALL(account1, ChangeBalance(-(600 + 200)))
-      .Times(1)
-      .WillOnce([&account1]() {
+  EXPECT_CALL(account1, ChangeBalance(-(600 + 200))).Times(1).WillOnce
+  ([&account1]() {
         return account1.Account::ChangeBalance(-(600 + 200));
       });
   EXPECT_CALL(account1, Unlock()).Times(1).WillOnce([&account1]() {
